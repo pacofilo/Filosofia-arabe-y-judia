@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Filosofía Árabe y Judía Medieval</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'Manrope',sans-serif;
+  --bg:#FAF8F4;
+  --bg-card:#FFFFFF;
+  --bg-dark:#0f1a0f;
+  --text:#2a2a2a;
+  --text-light:#4a4550;
+  --text-muted:#8a8494;
+  --accent:#C25B2B;
+  --accent-light:#E88B5A;
+  --accent-gold:#C9952A;
+  --accent-green:#2E7D52;
+  --accent-blue:#2563A8;
+  --accent-sand:#D4A96A;
+  --accent-deep:#8B1A1A;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.06);
+  --shadow-md:0 4px 20px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.12);
+  --radius:16px;
+  --radius-sm:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;overflow-x:hidden}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:linear-gradient(160deg,#0d1a0d 0%,#1a2e10 25%,#2C1810 55%,#5C3010 80%,#8B5A1A 100%);
+  color:#fff;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(201,149,42,.10) 0%,transparent 45%),
+    radial-gradient(circle at 80% 70%,rgba(46,125,82,.10) 0%,transparent 40%),
+    radial-gradient(circle at 50% 50%,rgba(139,26,26,.08) 0%,transparent 50%);
+  animation:heroFloat 22s ease-in-out infinite}
+/* Geometric arabesque overlay */
+.hero::after{content:'';position:absolute;inset:0;background-image:
+  radial-gradient(circle at 15% 85%, rgba(201,149,42,.06) 0%, transparent 30%),
+  radial-gradient(circle at 85% 15%, rgba(46,125,82,.06) 0%, transparent 30%);
+  pointer-events:none}
+@keyframes heroFloat{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(1.5%,1%) rotate(.8deg)}}
+.hero-content{position:relative;z-index:2;max-width:860px}
+.hero-badge{display:inline-block;padding:.4rem 1.4rem;border:1px solid rgba(255,255,255,.22);border-radius:30px;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;backdrop-filter:blur(4px);background:rgba(255,255,255,.06)}
+.hero-trio{display:flex;gap:2.5rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
+.hero-trio-name{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;line-height:1.1}
+.hero-trio-name.avicena{background:linear-gradient(135deg,#fff 30%,#C9952A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-trio-name.averroes{background:linear-gradient(135deg,#fff 30%,#2E7D52);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-trio-name.maimonides{background:linear-gradient(135deg,#fff 30%,#2563A8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-trio-dot{color:rgba(255,255,255,.2);font-family:var(--font-display);font-size:2rem;align-self:center}
+.hero-title{font-family:var(--font-display);font-size:clamp(1rem,2.2vw,1.4rem);font-weight:400;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+.hero-sub{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(255,255,255,.65);font-weight:300;max-width:680px;margin:0 auto 2rem}
+.hero-dates{font-family:var(--font-display);font-size:1rem;color:rgba(255,255,255,.35);letter-spacing:1px}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.35);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+.sticky-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06);padding:.8rem 2rem;transition:box-shadow .3s}
+.sticky-nav.scrolled{box-shadow:var(--shadow-sm)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-brand{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--accent-gold);white-space:nowrap;cursor:pointer}
+.nav-links{display:flex;gap:.4rem;margin-left:auto;flex-wrap:nowrap}
+.nav-link{padding:.35rem .8rem;border-radius:8px;font-size:.68rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;transition:all .3s;white-space:nowrap;color:var(--text-muted);border:none;background:none}
+.nav-link:hover,.nav-link.active{background:var(--accent-gold);color:#fff}
+.nav-link.nav-av:hover,.nav-link.nav-av.active{background:var(--accent-gold)}
+.nav-link.nav-ar:hover,.nav-link.nav-ar.active{background:var(--accent-green)}
+.nav-link.nav-ma:hover,.nav-link.nav-ma.active{background:var(--accent-blue)}
+.nav-link.nav-to:hover,.nav-link.nav-to.active{background:var(--accent)}
+
+.main-content{max-width:1200px;margin:0 auto;padding:2rem 1.5rem}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;text-align:center;margin:3rem 0 1rem;color:var(--text);line-height:1.2}
+.section-subtitle{text-align:center;color:var(--text-muted);font-size:.92rem;max-width:640px;margin:0 auto 2.5rem}
+
+/* Philosopher headers */
+.phil-header{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.5rem;padding-bottom:.8rem;border-bottom:2px solid}
+.phil-header.gold{border-color:var(--accent-gold)}
+.phil-header.green{border-color:var(--accent-green)}
+.phil-header.blue{border-color:var(--accent-blue)}
+.phil-header h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700}
+.phil-header .dates{font-size:.8rem;color:var(--text-muted);letter-spacing:1px}
+.phil-badge{padding:.3rem .9rem;border-radius:20px;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0}
+
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem;margin-bottom:3rem}
+.card{background:var(--bg-card);border-radius:var(--radius);padding:1.7rem;cursor:pointer;border:1px solid rgba(0,0,0,.05);transition:all .4s cubic-bezier(.25,.46,.45,.94);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;transition:height .4s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.card:hover::before{height:6px}
+.card-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:.9rem}
+.card-title{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.45rem}
+.card-desc{font-size:.83rem;color:var(--text-light);line-height:1.6}
+.card-action{display:inline-flex;align-items:center;gap:.3rem;margin-top:.9rem;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+
+.card--gold::before{background:var(--accent-gold)}.card--gold .card-icon{background:rgba(201,149,42,.1);color:var(--accent-gold)}.card--gold .card-action{color:var(--accent-gold)}
+.card--green::before{background:var(--accent-green)}.card--green .card-icon{background:rgba(46,125,82,.1);color:var(--accent-green)}.card--green .card-action{color:var(--accent-green)}
+.card--blue::before{background:var(--accent-blue)}.card--blue .card-icon{background:rgba(37,99,168,.1);color:var(--accent-blue)}.card--blue .card-action{color:var(--accent-blue)}
+.card--sand::before{background:var(--accent-sand)}.card--sand .card-icon{background:rgba(212,169,106,.1);color:var(--accent-sand)}.card--sand .card-action{color:var(--accent-sand)}
+.card--red::before{background:var(--accent-deep)}.card--red .card-icon{background:rgba(139,26,26,.1);color:var(--accent-deep)}.card--red .card-action{color:var(--accent-deep)}
+.card--orange::before{background:var(--accent)}.card--orange .card-icon{background:rgba(194,91,43,.1);color:var(--accent)}.card--orange .card-action{color:var(--accent)}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px);opacity:0;transition:opacity .3s}
+.modal-overlay.show{display:flex;opacity:1}
+.modal{background:var(--bg);border-radius:var(--radius);max-width:840px;width:100%;max-height:87vh;overflow-y:auto;position:relative;animation:modalIn .4s ease}
+@keyframes modalIn{from{transform:translateY(30px) scale(.96);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.modal-header{position:sticky;top:0;background:var(--bg);padding:1.5rem 2rem 1rem;border-bottom:1px solid rgba(0,0,0,.07);display:flex;align-items:center;gap:1rem;z-index:2}
+.modal-header-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.modal-header h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;flex:1}
+.modal-close{width:36px;height:36px;border-radius:50%;border:none;background:rgba(0,0,0,.06);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+.modal-close:hover{background:var(--accent-deep);color:#fff}
+.modal-body{padding:1.5rem 2rem 2rem}
+.modal-body p{margin-bottom:1rem;font-size:.91rem;color:var(--text-light)}
+.modal-body h3{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:1.5rem 0 .6rem;color:var(--text)}
+.modal-body h4{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin:1.2rem 0 .5rem;color:var(--text-light)}
+.modal-body blockquote{border-left:3px solid var(--accent-gold);padding:.8rem 1.2rem;margin:1rem 0;background:rgba(201,149,42,.06);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-style:italic;font-family:var(--font-display);font-size:1rem;color:var(--text-light)}
+.modal-body ul,.modal-body ol{padding-left:1.2rem;margin:.5rem 0 1rem}
+.modal-body li{font-size:.9rem;color:var(--text-light);margin-bottom:.4rem}
+
+.chip{display:inline-block;padding:.2rem .6rem;border-radius:6px;font-size:.75rem;font-weight:600;margin:.2rem}
+.chip--g{background:rgba(201,149,42,.1);color:var(--accent-gold)}
+.chip--gr{background:rgba(46,125,82,.1);color:var(--accent-green)}
+.chip--b{background:rgba(37,99,168,.1);color:var(--accent-blue)}
+.chip--r{background:rgba(139,26,26,.1);color:var(--accent-deep)}
+.chip--o{background:rgba(194,91,43,.1);color:var(--accent)}
+
+.subpage{display:none;animation:fadeIn .5s ease}.subpage.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;border-radius:10px;border:1px solid rgba(0,0,0,.1);background:var(--bg-card);font-family:var(--font-body);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .3s;margin-bottom:2rem;color:var(--text)}
+.back-btn:hover{background:var(--accent-gold);color:#fff;border-color:var(--accent-gold)}
+.subpage-hero{padding:2.5rem 2rem;border-radius:var(--radius);margin-bottom:2rem;color:#fff;position:relative;overflow:hidden}
+.subpage-hero h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:.5rem;position:relative;z-index:2}
+.subpage-hero p{font-size:.93rem;opacity:.85;max-width:620px;position:relative;z-index:2}
+.cb{background:var(--bg-card);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem;border:1px solid rgba(0,0,0,.05)}
+.cb h3{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:.8rem;color:var(--text)}
+.cb h4{font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:1rem 0 .5rem;color:var(--text-light)}
+.cb p{font-size:.9rem;color:var(--text-light);margin-bottom:.8rem}
+.cb blockquote{border-left:3px solid var(--accent-gold);padding:.8rem 1.2rem;margin:1rem 0;background:rgba(201,149,42,.06);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-style:italic;font-family:var(--font-display);font-size:1rem;color:var(--text-light)}
+.cb ul,.cb ol{padding-left:1.2rem;margin:.5rem 0 1rem}.cb li{font-size:.88rem;color:var(--text-light);margin-bottom:.4rem}
+.tag{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1rem}
+
+.accordion{border:1px solid rgba(0,0,0,.07);border-radius:var(--radius-sm);margin-bottom:.8rem;overflow:hidden}
+.accordion-header{padding:1rem 1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:.88rem;background:var(--bg-card);transition:background .3s}
+.accordion-header:hover{background:rgba(201,149,42,.04)}
+.accordion-header .arrow{transition:transform .3s;font-size:.8rem}
+.accordion.open .accordion-header .arrow{transform:rotate(180deg)}
+.accordion-content{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.accordion.open .accordion-content{max-height:5000px}
+.accordion-inner{padding:0 1.2rem 1.2rem}
+.accordion-inner p{font-size:.88rem;color:var(--text-light);margin-bottom:.6rem}
+.accordion-inner ul{padding-left:1.2rem}.accordion-inner li{font-size:.86rem;color:var(--text-light);margin-bottom:.3rem}
+
+.timeline{position:relative;padding-left:2rem;margin:1.5rem 0}
+.timeline::before{content:'';position:absolute;left:.5rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent-gold),var(--accent-green))}
+.timeline-item{position:relative;margin-bottom:1.5rem;padding-left:1.5rem}
+.timeline-item::before{content:'';position:absolute;left:-1.55rem;top:.5rem;width:10px;height:10px;border-radius:50%;background:var(--accent-gold);border:2px solid var(--bg)}
+.timeline-date{font-size:.75rem;font-weight:700;color:var(--accent-gold);text-transform:uppercase;letter-spacing:1px}
+.timeline-text{font-size:.88rem;color:var(--text-light)}
+
+.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1rem 0}
+.compare-box{border-radius:var(--radius-sm);padding:1.2rem;border:1px solid rgba(0,0,0,.06)}
+.compare-box h4{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.compare-box p{font-size:.85rem;color:var(--text-light)}
+
+/* Influence flow diagram */
+.influence-flow{display:flex;align-items:center;justify-content:center;gap:0;margin:1.5rem 0;flex-wrap:wrap}
+.influence-node{padding:.8rem 1.2rem;border-radius:var(--radius-sm);font-family:var(--font-display);font-weight:700;font-size:.95rem;text-align:center;min-width:120px}
+.influence-arrow{font-size:1.4rem;color:var(--accent-gold);padding:0 .5rem;flex-shrink:0}
+
+footer{background:var(--bg-dark);color:rgba(255,255,255,.55);text-align:center;padding:2.5rem 1.5rem;margin-top:4rem}
+footer .brand{font-family:var(--font-display);font-size:1.3rem;color:#fff;font-weight:700;margin-bottom:.5rem}
+footer p{font-size:.78rem}
+
+@media(max-width:768px){.cards-grid{grid-template-columns:1fr}.modal{max-height:95vh;border-radius:var(--radius) var(--radius) 0 0}.modal-body,.modal-header{padding:1rem 1.2rem}.cb{padding:1.2rem}.sticky-nav{padding:.6rem 1rem}.hero-trio{gap:1.2rem}.hero-trio-dot{display:none}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-content">
+    <div class="hero-badge">Filosofía Medieval — Siglos X–XII</div>
+    <p class="hero-title">La gran tradición</p>
+    <div class="hero-trio">
+      <div class="hero-trio-name avicena">Avicena</div>
+      <div class="hero-trio-dot">·</div>
+      <div class="hero-trio-name averroes">Averroes</div>
+      <div class="hero-trio-dot">·</div>
+      <div class="hero-trio-name maimonides">Maimónides</div>
+    </div>
+    <p class="hero-sub">Tres pensadores que salvaron, comentaron y renovaron a Aristóteles y cuya influencia moldeó la escolástica cristiana, especialmente la Suma Teológica de Tomás de Aquino.</p>
+    <div class="hero-dates">Filosofía árabe e islámica · Filosofía judía medieval</div>
+  </div>
+  <div class="scroll-hint">↓ Explorar</div>
+</header>
+
+<!-- NAV -->
+<nav class="sticky-nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="showMain()">Fil. Árabe-Judía</div>
+    <div class="nav-links">
+      <button class="nav-link active" onclick="showMain()">Inicio</button>
+      <button class="nav-link nav-av" onclick="goToSub('sub-avicena')">Avicena</button>
+      <button class="nav-link nav-ar" onclick="goToSub('sub-averroes')">Averroes</button>
+      <button class="nav-link nav-ma" onclick="goToSub('sub-maimonides')">Maimónides</button>
+      <button class="nav-link nav-to" onclick="goToSub('sub-tomás')">Influencia en Tomás</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN PAGE -->
+<div id="mainPage" class="subpage active">
+<main class="main-content">
+  <h2 class="section-title">Tres pilares del pensamiento medieval</h2>
+  <p class="section-subtitle">Pincha en cada tarjeta para abrir un resumen detallado o navega a las secciones completas</p>
+
+  <!-- Avicena group -->
+  <div class="phil-header gold">
+    <div class="phil-badge" style="background:rgba(201,149,42,.12);color:var(--accent-gold)">Islam · Persia</div>
+    <div>
+      <h2 style="color:var(--accent-gold)">Avicena</h2>
+      <div class="dates">Ibn Sīnā · c. 980 – 1037</div>
+    </div>
+  </div>
+  <div class="cards-grid">
+    <div class="card card--gold" onclick="openModal('modalAvVida')">
+      <div class="card-icon">📜</div>
+      <div class="card-title">Vida y obra</div>
+      <div class="card-desc">El "Príncipe de los médicos y filósofos": de Bujará a Ispahán. El Canon de Medicina y el Libro de la Curación.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--gold" onclick="openModal('modalAvSer')">
+      <div class="card-icon">🔷</div>
+      <div class="card-title">Ser necesario y contingente</div>
+      <div class="card-desc">La distinción fundamental de su metafísica: Dios como único ser cuya esencia implica la existencia.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--sand" onclick="openModal('modalAvEsencia')">
+      <div class="card-icon">⚗️</div>
+      <div class="card-title">Esencia y existencia</div>
+      <div class="card-desc">En los seres contingentes la existencia es un «accidente» añadido a la esencia. Una distinción real de enorme impacto posterior.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--gold" onclick="goToSub('sub-avicena')">
+      <div class="card-icon">🌌</div>
+      <div class="card-title">Emanación e intelecto agente</div>
+      <div class="card-desc">Los diez intelectos: del Ser necesario al intelecto agente que ilumina las almas humanas.</div>
+      <div class="card-action">Ir a sección →</div>
+    </div>
+  </div>
+
+  <!-- Averroes group -->
+  <div class="phil-header green">
+    <div class="phil-badge" style="background:rgba(46,125,82,.12);color:var(--accent-green)">Islam · Al-Ándalus</div>
+    <div>
+      <h2 style="color:var(--accent-green)">Averroes</h2>
+      <div class="dates">Ibn Rushd · 1126 – 1198</div>
+    </div>
+  </div>
+  <div class="cards-grid">
+    <div class="card card--green" onclick="openModal('modalArVida')">
+      <div class="card-icon">📜</div>
+      <div class="card-title">Vida y obra</div>
+      <div class="card-desc">El Gran Comentador de Aristóteles. De Córdoba a Marrakech: médico, juez y filósofo en la Iberia musulmana.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--green" onclick="openModal('modalArAristoteles')">
+      <div class="card-icon">📚</div>
+      <div class="card-title">Defensa de Aristóteles</div>
+      <div class="card-desc">Contra al-Ghazali: la filosofía no contradice la fe. Comentarios breves, medios y largos de toda la obra aristotélica.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--green" onclick="openModal('modalArIntelecto')">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">Teoría del intelecto único</div>
+      <div class="card-desc">El intelecto material es único para toda la humanidad. Una tesis que escandalizó a la escolástica.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--green" onclick="goToSub('sub-averroes')">
+      <div class="card-icon">⚖️</div>
+      <div class="card-title">Fe y razón</div>
+      <div class="card-desc">La «doble verdad» y la teoría de los tres discursos: retórico, dialéctico y demostrativo.</div>
+      <div class="card-action">Ir a sección →</div>
+    </div>
+  </div>
+
+  <!-- Maimónides group -->
+  <div class="phil-header blue">
+    <div class="phil-badge" style="background:rgba(37,99,168,.12);color:var(--accent-blue)">Judaísmo · Al-Ándalus</div>
+    <div>
+      <h2 style="color:var(--accent-blue)">Maimónides</h2>
+      <div class="dates">Mošeh ben Maimon · 1138 – 1204</div>
+    </div>
+  </div>
+  <div class="cards-grid">
+    <div class="card card--blue" onclick="openModal('modalMaVida')">
+      <div class="card-icon">📜</div>
+      <div class="card-title">Vida y obra</div>
+      <div class="card-desc">De Córdoba a El Cairo. La Mishné Torá y la Guía de Perplejos: síntesis de Torah y aristotelismo.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--blue" onclick="openModal('modalMaTeologia')">
+      <div class="card-icon">🕍</div>
+      <div class="card-title">Teología negativa</div>
+      <div class="card-desc">De Dios solo podemos decir lo que no es. Los atributos divinos como negaciones para proteger la unicidad de Dios.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--blue" onclick="openModal('modalMaCreacion')">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Creación vs. eternidad del mundo</div>
+      <div class="card-desc">Contra Aristóteles: el mundo fue creado en el tiempo. Razón y revelación frente a frente.</div>
+      <div class="card-action">Ver resumen →</div>
+    </div>
+    <div class="card card--blue" onclick="goToSub('sub-maimonides')">
+      <div class="card-icon">🔯</div>
+      <div class="card-title">Profecía y providencia</div>
+      <div class="card-desc">La profecía como perfección intelectual. Dios y la providencia individual frente al determinismo aristotélico.</div>
+      <div class="card-action">Ir a sección →</div>
+    </div>
+  </div>
+
+  <!-- Influencia -->
+  <div class="phil-header" style="border-color:var(--accent)">
+    <div class="phil-badge" style="background:rgba(194,91,43,.12);color:var(--accent)">Escolástica</div>
+    <div>
+      <h2 style="color:var(--accent)">Influencia en Santo Tomás de Aquino</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+    <div class="card card--orange" onclick="goToSub('sub-tomás')">
+      <div class="card-icon">✝️</div>
+      <div class="card-title">Tomás y Avicena</div>
+      <div class="card-desc">La distinción real esencia/existencia, las cinco vías y la prueba cosmológica. La deuda oculta con Ibn Sīnā.</div>
+      <div class="card-action">Ir a sección →</div>
+    </div>
+    <div class="card card--orange" onclick="goToSub('sub-tomás')">
+      <div class="card-icon">⚔️</div>
+      <div class="card-title">Tomás contra y con Averroes</div>
+      <div class="card-desc">El rechazo al monopsiquismo y la incorporación del Aristóteles «auténtico» gracias al Comentador.</div>
+      <div class="card-action">Ir a sección →</div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- SUBPAGE: AVICENA -->
+<div id="sub-avicena" class="subpage">
+<main class="main-content">
+  <button class="back-btn" onclick="showMain()">← Volver al inicio</button>
+  <div class="subpage-hero" style="background:linear-gradient(135deg,#3a2000,#C9952A)">
+    <h2>Avicena · Ibn Sīnā</h2>
+    <p>El más influyente de los filósofos del Islam: médico, metafísico y sistematizador del aristotelismo neoplatonizado.</p>
+  </div>
+
+  <div class="cb">
+    <h3>El proyecto filosófico de Avicena</h3>
+    <p>Avicena (Ibn Sīnā, c. 980-1037) nació en Afshana, cerca de Bujará (actual Uzbekistán). Su enciclopedia filosófica <em>Kitāb al-Shifā</em> (El Libro de la Curación) constituye la síntesis más ambiciosa de la filosofía aristotélica con el neoplatonismo y la teología islámica. Junto a ella, el <em>Canon de Medicina</em> fue libro de texto en las universidades europeas hasta el siglo XVII.</p>
+    <p>Su metafísica parte de una pregunta central: ¿por qué hay algo en vez de nada? Y su respuesta introduce la distinción que marcará toda la escolástica posterior.</p>
+  </div>
+
+  <div class="cb">
+    <h3>Ser necesario y ser contingente</h3>
+    <p>Para Avicena, la distinción fundamental es entre el <strong>Ser necesario</strong> (<em>wājib al-wujūd</em>) y los <strong>seres contingentes o posibles</strong> (<em>mumkin al-wujūd</em>).</p>
+    <blockquote>«El ser necesario es aquel que, si se supone no existente, implica contradicción. El ser posible es aquel que puede suponerse como no existente o existente sin implicar contradicción.»</blockquote>
+    <div class="compare-grid">
+      <div class="compare-box" style="border-color:var(--accent-gold);background:rgba(201,149,42,.04)">
+        <h4 style="color:var(--accent-gold)">Ser necesario = Dios</h4>
+        <p>En Él la <strong>esencia y la existencia se identifican</strong>: no puede concebirse a sí mismo más que existiendo. Es simplísimo, único, inmutable, inefable. Su esencia <em>es</em> su existencia.</p>
+      </div>
+      <div class="compare-box" style="border-color:var(--accent-green);background:rgba(46,125,82,.04)">
+        <h4 style="color:var(--accent-green)">Seres contingentes = todo lo demás</h4>
+        <p>Poseen esencia pero no necesariamente existencia. Esta les es <strong>dada desde fuera</strong>, por Dios. La existencia es, en ellos, un «accidente» extrínseco añadido a la esencia.</p>
+      </div>
+    </div>
+    <p>Avicena fue el primero en trasladar las categorías modales de la lógica (necesario, posible, imposible) al plano metafísico. Este salto será decisivo para toda la tradición posterior.</p>
+  </div>
+
+  <div class="cb">
+    <h3>La emanación y los diez intelectos</h3>
+    <p>¿Cómo puede el Ser necesario, simple y único, generar la multiplicidad del mundo? Avicena recoge la teoría neoplatónica de la emanación pero la reformula aristotélicamente.</p>
+    <p>El Ser necesario, al pensarse a sí mismo, genera necesariamente el <strong>primer intelecto</strong>. Este, a su vez, lleva a cabo un triple acto reflexivo del que surgen tres seres: el intelecto siguiente, el alma y el cuerpo de la esfera celeste correspondiente. El proceso se repite diez veces:</p>
+    <ol style="padding-left:1.2rem;margin:.8rem 0">
+      <li style="font-size:.88rem;color:var(--text-light);margin-bottom:.3rem">Intelecto, alma y cuerpo de la esfera de las estrellas fijas</li>
+      <li style="font-size:.88rem;color:var(--text-light);margin-bottom:.3rem">Saturno · Júpiter · Marte · Sol · Venus · Mercurio · Luna</li>
+      <li style="font-size:.88rem;color:var(--text-light)"><strong>Décimo intelecto: el intelecto agente</strong>, que ilumina las almas humanas y produce las formas del mundo sublunar</li>
+    </ol>
+    <p>Los intelectos celestes se identifican con los ángeles: los querubines son los intelectos; las almas celestes son los ángeles intermediarios. Es la racionalización filosófica de la angelología islámica.</p>
+  </div>
+
+  <div class="cb">
+    <h3>El alma humana y el intelecto agente</h3>
+    <p>Para Avicena, el alma es superior al cuerpo y su unión con él es meramente transitoria. El alma es inmortal e individual, y en esto se aparta de Averroes.</p>
+    <p>El conocimiento humano requiere la <strong>iluminación del intelecto agente</strong> (el décimo intelecto). El intelecto humano pasa de la potencia al acto gracias a este intelecto separado que actúa como «dador de formas» (<em>wāhib al-suwar</em>).</p>
+    <p>Su famoso <strong>argumento del Hombre Volante</strong> anticipa la duda metódica cartesiana: si un hombre fuera creado de repente, privado de toda sensación corporal y suspendido en el vacío, aun así se afirmaría a sí mismo como existente. El alma se conoce a sí misma con independencia del cuerpo.</p>
+  </div>
+</main>
+</div>
+
+<!-- SUBPAGE: AVERROES -->
+<div id="sub-averroes" class="subpage">
+<main class="main-content">
+  <button class="back-btn" onclick="showMain()">← Volver al inicio</button>
+  <div class="subpage-hero" style="background:linear-gradient(135deg,#0d1f0d,#2E7D52)">
+    <h2>Averroes · Ibn Rushd</h2>
+    <p>El Gran Comentador: quien devolvió el Aristóteles auténtico a Europa y desafió la conciliación entre filosofía y fe.</p>
+  </div>
+
+  <div class="cb">
+    <h3>El comentador de Aristóteles</h3>
+    <p>Averroes (Ibn Rushd, 1126-1198) nació en Córdoba. Juez supremo, médico del califa y el más riguroso comentador de Aristóteles de la Edad Media, elaboró tres tipos de comentarios: <strong>breves</strong> (paráfrasis), <strong>medios</strong> y <strong>largos</strong> (análisis literal). Su proyecto era recuperar el Aristóteles histórico, depurándolo de las glosas neoplatónicas.</p>
+    <p>En Europa latina sus obras se difundieron masivamente desde el siglo XIII. Se convirtió en <em>El Comentador</em> por antonomasia: cuando Dante lo menciona en el <em>Infierno</em>, lo llama simplemente «Averrois, che il gran commento feo».</p>
+  </div>
+
+  <div class="cb">
+    <h3>Contra al-Ghazālī: la defensa de la filosofía</h3>
+    <p>Al-Ghazālī (1058-1111) había escrito la <em>Tahāfut al-Falāsifa</em> (La incoherencia de los filósofos), atacando veinte tesis de Avicena y al-Fārābī como heréticas. Averroes respondió con la <em>Tahāfut al-Tahāfut</em> (La incoherencia de la incoherencia), defensa punto por punto de la razón filosófica.</p>
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)"><span>Las tres tesis que al-Ghazālī consideraba heréticas</span><span class="arrow">▼</span></div>
+      <div class="accordion-content"><div class="accordion-inner">
+        <ul>
+          <li><strong>La eternidad del mundo:</strong> los filósofos sostenían que el mundo no fue creado en el tiempo.</li>
+          <li><strong>Dios no conoce los particulares:</strong> solo conoce las universales.</li>
+          <li><strong>Negación de la resurrección corporal:</strong> solo hay inmortalidad del alma.</li>
+        </ul>
+        <p>Averroes no cedió fácilmente en ninguna de las tres, aunque intentó mostrar que la interpretación filosófica era compatible con la revelación en su sentido profundo.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="cb">
+    <h3>La teoría del intelecto único (monopsiquismo)</h3>
+    <p>La tesis más controvertida de Averroes: el <strong>intelecto material</strong> (la capacidad de entender) no es individual sino <strong>único para toda la humanidad</strong>. Es una sustancia separada, eterna e impersonal, que se «une» temporalmente a cada individuo cuando este piensa.</p>
+    <div class="compare-grid">
+      <div class="compare-box" style="border-color:var(--accent-green);background:rgba(46,125,82,.04)">
+        <h4 style="color:var(--accent-green)">Intelecto material (único)</h4>
+        <p>Sustancia separada, eterna. Se une a los individuos a través de las «formas inteligibles» que cada uno actualiza.</p>
+      </div>
+      <div class="compare-box" style="border-color:var(--accent-gold);background:rgba(201,149,42,.04)">
+        <h4 style="color:var(--accent-gold)">Intelecto agente (único)</h4>
+        <p>También separado y eterno. Ilumina el intelecto material para que actualice los inteligibles. Herencia de Avicena y Aristóteles.</p>
+      </div>
+    </div>
+    <p>Consecuencia: <strong>no hay inmortalidad personal</strong>. Al morir, la conexión individual con el intelecto único se disuelve. Esta tesis escandalizó a la escolástica cristiana, que la llamó <em>averroísmo</em>. Tomás de Aquino le dedicó un tratado entero para refutarla: <em>De unitate intellectus contra Averroistas</em>.</p>
+  </div>
+
+  <div class="cb">
+    <h3>Fe y razón: los tres discursos</h3>
+    <p>Averroes distingue tres tipos de argumentación, que corresponden a tres tipos de personas:</p>
+    <div class="compare-grid">
+      <div class="compare-box" style="border-color:var(--accent-sand)">
+        <h4>Discurso retórico</h4>
+        <p>Para el pueblo. Opera con imágenes, metáforas y emociones. Es el lenguaje del Corán en su sentido literal.</p>
+      </div>
+      <div class="compare-box" style="border-color:var(--accent-gold)">
+        <h4>Discurso dialéctico</h4>
+        <p>Para los teólogos. Opera con argumentos probables. La kalām (teología racional islámica).</p>
+      </div>
+      <div class="compare-box" style="border-color:var(--accent-green)">
+        <h4>Discurso demostrativo</h4>
+        <p>Para los filósofos. Opera con demostraciones necesarias. La auténtica filosofía aristotélica.</p>
+      </div>
+    </div>
+    <p>La «doble verdad» que los escolásticos atribuyeron a Averroes no es exactamente su posición: para él, cuando hay contradicción, la interpretación filosófica es la verdadera y el texto sagrado debe reinterpretarse alegóricamente.</p>
+  </div>
+</main>
+</div>
+
+<!-- SUBPAGE: MAIMÓNIDES -->
+<div id="sub-maimonides" class="subpage">
+<main class="main-content">
+  <button class="back-btn" onclick="showMain()">← Volver al inicio</button>
+  <div class="subpage-hero" style="background:linear-gradient(135deg,#071520,#2563A8)">
+    <h2>Maimónides · Mošeh ben Maimon</h2>
+    <p>El mayor filósofo judío medieval: sistematizador de la halajá y puente entre la Torah y la filosofía aristotélica.</p>
+  </div>
+
+  <div class="cb">
+    <h3>Vida y contexto</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">1138 — Córdoba</div>
+        <div class="timeline-text">Nace en Córdoba, en el seno de una ilustre familia judía. Su padre era dayan (juez) y erudito talmúdico.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">c. 1148 — Almohades</div>
+        <div class="timeline-text">La invasión almohade fuerza a los judíos a elegir entre conversión y exilio. La familia de Maimónides emprende un largo peregrinaje.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">c. 1165 — Marruecos y Palestina</div>
+        <div class="timeline-text">Años de errancia por el norte de África y una breve estancia en Tierra Santa.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">c. 1168 — El Cairo</div>
+        <div class="timeline-text">Se instala definitivamente en Fustat (El Cairo). Se convierte en médico de Saladino y líder de la comunidad judía egipcia.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1168 — Comentario a la Mishná</div>
+        <div class="timeline-text">Primera gran obra jurídica, escrita en árabe. Incluye los célebres «Trece principios de la fe».</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1180 — Mishné Torá</div>
+        <div class="timeline-text">Codificación sistemática de toda la ley judía en hebreo. Obra monumental de jurisprudencia y teología.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1190 — Guía de Perplejos</div>
+        <div class="timeline-text"><em>Dalālat al-ḥā'irīn</em>: su obra filosófica cumbre, dirigida al lector que conoce la filosofía y ha entrado en conflicto con la fe.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cb">
+    <h3>La Guía de Perplejos: filosofía para los que dudan</h3>
+    <p>La <em>Guía de Perplejos</em> está dirigida a quien ha estudiado filosofía y ciencias y se halla «perplejo» ante la aparente contradicción entre la razón aristotélica y los textos sagrados. Maimónides busca mostrar que dicha contradicción es solo aparente.</p>
+    <p>La obra tiene una estructura deliberadamente oscura: Maimónides confiesa en el prólogo que ha ocultado doctrinas esotéricas, accesibles solo a los lectores cuidadosos. Este esoterismo ha generado siglos de debate interpretativo.</p>
+  </div>
+
+  <div class="cb">
+    <h3>Teología negativa: solo sabemos lo que Dios no es</h3>
+    <p>Para Maimónides, la unicidad y simplicidad absoluta de Dios hace imposible toda predicación positiva sobre Él. Cualquier atributo positivo que le asignemos implicaría composición o limitación.</p>
+    <blockquote>«Cuando dices que Dios existe, no quieres decir que la existencia le convenga como a los demás seres. Quieres decir que no es un no-ser.»</blockquote>
+    <p>Los atributos que la tradición predica de Dios (bueno, sabio, poderoso) deben entenderse como <strong>negaciones</strong>:</p>
+    <ul>
+      <li>«Dios existe» = «Dios no es un no-ser»</li>
+      <li>«Dios es bueno» = «Dios no es malo ni está privado de perfección»</li>
+      <li>«Dios es uno» = «no hay multiplicidad en Dios»</li>
+    </ul>
+    <p>Esta teología negativa (<em>via negationis</em>) influyó directamente en Tomás de Aquino, que la incorporó como uno de los tres modos de hablar de Dios.</p>
+  </div>
+
+  <div class="cb">
+    <h3>Creación vs. eternidad del mundo</h3>
+    <p>Aristóteles sostenía la eternidad del mundo (sin principio ni fin). Avicena lo seguía en esto. Para la fe monoteísta, en cambio, el mundo fue creado en el tiempo.</p>
+    <p>Maimónides adopta una postura matizada: la razón filosófica no puede demostrar ni la eternidad ni la creación temporal del mundo. Ambas son teóricamente posibles. Pero dado que la razón no resuelve el problema, la revelación inclina la balanza: el mundo fue creado.</p>
+    <p>Esta separación entre lo demostrable y lo creíble será fundamental para Tomás, que adoptará una posición muy similar.</p>
+  </div>
+
+  <div class="cb">
+    <h3>Profecía y providencia</h3>
+    <p>Maimónides racionaliza la profecía: el profeta no es alguien que recibe una iluminación mística arbitraria, sino quien ha alcanzado la <strong>máxima perfección intelectual y moral</strong>. El intelecto agente (herencia aviceniana) desborda en él hasta alcanzar también su imaginación.</p>
+    <p>Moisés es el profeta supremo porque en él la perfección fue absoluta y sin mezcla de imaginación.</p>
+    <p>En cuanto a la <strong>providencia</strong>, Maimónides rechaza tanto el determinismo aristotélico como el providencialismo ingenuo: la providencia individual actúa en proporción al desarrollo intelectual de cada ser humano.</p>
+  </div>
+</main>
+</div>
+
+<!-- SUBPAGE: INFLUENCIA EN TOMÁS -->
+<div id="sub-tomás" class="subpage">
+<main class="main-content">
+  <button class="back-btn" onclick="showMain()">← Volver al inicio</button>
+  <div class="subpage-hero" style="background:linear-gradient(135deg,#1a0800,#C25B2B)">
+    <h2>La influencia árabe y judía en Tomás de Aquino</h2>
+    <p>Cómo los tres grandes pensadores moldearon la Suma Teológica y la escolástica cristiana del siglo XIII.</p>
+  </div>
+
+  <div class="cb">
+    <h3>El contexto: la entrada de Aristóteles en Europa</h3>
+    <p>Aristóteles había desaparecido casi por completo del Occidente latino tras la caída del Imperio Romano. Fue en el mundo islámico donde se conservó, comentó y desarrolló. Cuando sus obras llegaron masivamente a las universidades europeas en el siglo XII-XIII, lo hicieron acompañadas de los comentarios de <strong>Avicena y Averroes</strong>, que actuaban como guías de lectura inevitables.</p>
+    <p>Tomás de Aquino (1225-1274) se propuso incorporar lo mejor de Aristóteles al pensamiento cristiano. Para ello tuvo que dialogar y en ocasiones enfrentarse a sus intérpretes árabes y judíos.</p>
+    <div class="influence-flow">
+      <div class="influence-node" style="background:rgba(201,149,42,.12);color:var(--accent-gold);border:1px solid rgba(201,149,42,.3)">Avicena<br><small>+Maimónides</small></div>
+      <div class="influence-arrow">→</div>
+      <div class="influence-node" style="background:rgba(46,125,82,.12);color:var(--accent-green);border:1px solid rgba(46,125,82,.3)">Averroes<br><small>(El Comentador)</small></div>
+      <div class="influence-arrow">→</div>
+      <div class="influence-node" style="background:rgba(194,91,43,.12);color:var(--accent);border:1px solid rgba(194,91,43,.3)">Tomás<br><small>de Aquino</small></div>
+      <div class="influence-arrow">→</div>
+      <div class="influence-node" style="background:rgba(37,99,168,.12);color:var(--accent-blue);border:1px solid rgba(37,99,168,.3)">Escolástica<br><small>cristiana</small></div>
+    </div>
+  </div>
+
+  <div class="cb">
+    <h3>La deuda de Tomás con Avicena</h3>
+    <h4>1. La distinción esencia/existencia</h4>
+    <p>Avicena había establecido que en los seres contingentes la esencia no implica la existencia, que les es dada extrínsecamente. Tomás tomó esta distinción y la reformuló: en todo ser creado hay una <strong>composición real de esencia y existencia</strong> (<em>esse</em>). Solo en Dios esencia y existencia se identifican.</p>
+    <p>Esta es quizá la tesis más importante que Tomás tomó de Avicena, aunque le dio un giro original: mientras para Avicena la existencia es un «accidente», para Tomás el <em>esse</em> es el acto más perfecto del ser, lo más íntimo de cada cosa.</p>
+
+    <h4>2. Las pruebas de la existencia de Dios</h4>
+    <p>La argumentación de Avicena a partir de la contingencia de los seres —si existen cosas que pueden no existir, debe haber un ser necesario que los fundamente— inspiró directamente la <strong>tercera vía</strong> de Tomás:</p>
+    <blockquote>«Hallamos en la naturaleza cosas que pueden existir o no existir [...] Si todo pudiera no existir, hubo un tiempo en que nada existía [...] Luego es necesario poner algo que sea por sí necesario.»</blockquote>
+    <p>La estructura del argumento es aviceniana; el vocabulario y la integración en el sistema son tomistas.</p>
+
+    <h4>3. El intelecto agente separado</h4>
+    <p>Avicena había postulado un único intelecto agente separado (el décimo intelecto) como fuente de las formas inteligibles. Tomás rechazó esta solución por contraria a la individualidad del alma, pero mantuvo la <strong>función iluminadora</strong> del intelecto agente, multiplicándolo: cada alma humana tiene su propio intelecto agente.</p>
+  </div>
+
+  <div class="cb">
+    <h3>La deuda de Tomás con Maimónides</h3>
+    <h4>1. La vía negativa</h4>
+    <p>Maimónides había sistematizado la teología apofática: solo podemos predicar de Dios negaciones. Tomás la incorporó como uno de los tres modos legítimos de hablar de Dios (<em>via negationis</em>, junto a la <em>via causalitatis</em> y la <em>via eminentiae</em>).</p>
+
+    <h4>2. Creación y eternidad del mundo</h4>
+    <p>Maimónides había argumentado que la razón no puede demostrar ni la eternidad ni la creación temporal del mundo. Tomás adoptó exactamente esta posición: la creación del mundo <em>en el tiempo</em> es verdad de fe, no de razón. La filosofía no puede refutarla ni demostrarla.</p>
+
+    <h4>3. El conocimiento de Dios sobre los particulares</h4>
+    <p>Maimónides había combatido la tesis aristotélica de que Dios solo conoce lo universal. Tomás, siguiendo su estela, afirmó que Dios conoce los particulares de modo eminente, sin las limitaciones del conocimiento humano.</p>
+  </div>
+
+  <div class="cb">
+    <h3>La batalla de Tomás contra Averroes</h3>
+    <p>Con Averroes, Tomás tuvo una relación más compleja: lo citaba continuamente como autoridad en los textos aristotélicos, pero combatió sus tesis más polémicas con dureza.</p>
+
+    <h4>El gran enemigo: el monopsiquismo</h4>
+    <p>La tesis de Averroes del intelecto único compartido por todos los hombres era intolerable para el cristianismo: destruía la inmortalidad personal y hacía imposible la responsabilidad moral individual.</p>
+    <p>Tomás le dedicó el tratado <em>De unitate intellectus contra Averroistas</em> (1270), donde argumentó que esta lectura contradecía al propio Aristóteles y que el intelecto agente y el posible debían multiplicarse con cada alma individual.</p>
+
+    <h4>Lo que Tomás sí tomó de Averroes</h4>
+    <p>A pesar de la polémica, Tomás debía mucho al Comentador:</p>
+    <ul>
+      <li>El acceso al <strong>Aristóteles completo</strong>: los comentarios de Averroes eran insustituibles para entender textos oscuros.</li>
+      <li>La <strong>distinción entre intelecto agente y posible</strong>, que Tomás reformuló pero no abandonó.</li>
+      <li>La convicción de que <strong>filosofía y teología son ámbitos autónomos</strong> con métodos propios, aunque no contradictorios.</li>
+      <li>Numerosas soluciones a problemas de física y cosmología aristotélica.</li>
+    </ul>
+
+    <h4>El averroísmo latino</h4>
+    <p>Paradójicamente, mientras Tomás combatía el averroísmo, sus contemporáneos como Siger de Brabante llevaban las tesis de Averroes hasta sus últimas consecuencias. La condena del obispo Tempier en 1277 afectó tanto a los averroístas como, de forma póstuma, a algunas tesis del propio Tomás.</p>
+  </div>
+
+  <div class="cb">
+    <h3>Síntesis: el mapa de influencias</h3>
+    <div class="compare-grid">
+      <div class="compare-box" style="border-color:var(--accent-gold);background:rgba(201,149,42,.04)">
+        <h4 style="color:var(--accent-gold)">De Avicena a Tomás</h4>
+        <p>Distinción esencia/existencia · Ser necesario/contingente · Tercera vía cosmológica · Intelecto agente (reformulado) · Hilemorfismo</p>
+      </div>
+      <div class="compare-box" style="border-color:var(--accent-blue);background:rgba(37,99,168,.04)">
+        <h4 style="color:var(--accent-blue)">De Maimónides a Tomás</h4>
+        <p>Vía negativa · Creación temporal como verdad de fe · Dios conoce los particulares · Profecía como perfección intelectual</p>
+      </div>
+      <div class="compare-box" style="border-color:var(--accent-green);background:rgba(46,125,82,.04)">
+        <h4 style="color:var(--accent-green)">De Averroes a Tomás</h4>
+        <p>Transmisión del corpus aristotélico · Distinción intelecto agente/posible · Autonomía de la filosofía · Física y cosmología aristotélica</p>
+      </div>
+      <div class="compare-box" style="border-color:var(--accent-deep);background:rgba(139,26,26,.04)">
+        <h4 style="color:var(--accent-deep)">Tomás contra Averroes</h4>
+        <p>Refutación del monopsiquismo · Inmortalidad personal del alma · Providencia individual · Responsabilidad moral</p>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- ===================== MODALES ===================== -->
+
+<!-- Modal: Avicena Vida -->
+<div class="modal-overlay" id="modalAvVida" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(201,149,42,.1);color:var(--accent-gold)">📜</div>
+    <h2>Avicena · Vida y obra</h2>
+    <button class="modal-close" onclick="closeModal('modalAvVida')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>Ibn Sīnā, el Príncipe de los filósofos</h3>
+    <p>Abū ʿAlī al-Ḥusayn ibn ʿAbd Allāh ibn Sīnā (c. 980-1037) nació cerca de Bujará en el Jorasán persa. Prodigio intelectual, memorizó el Corán a los diez años y leyó a Aristóteles y a Porfirio en su adolescencia. A los dieciocho años era ya médico y había curado al sultán Nūh ibn Mansūr, quien le recompensó con acceso a su magnífica biblioteca.</p>
+    <h3>Obras principales</h3>
+    <ul>
+      <li><strong>Kitāb al-Shifā</strong> (El Libro de la Curación): enciclopedia filosófica en dieciocho volúmenes que abarca lógica, física, matemáticas y metafísica. Su título alude a la «curación del alma» por la filosofía.</li>
+      <li><strong>Kitāb al-Qānūn fī al-Ṭibb</strong> (El Canon de Medicina): tratado médico en cinco volúmenes, libro de texto en las universidades europeas hasta el siglo XVII.</li>
+      <li><strong>Kitāb al-Najāt</strong> (El Libro de la Salvación): compendio más accesible de su filosofía.</li>
+    </ul>
+    <h3>La síntesis aviceniana</h3>
+    <p>Avicena combinó el aristotelismo con el neoplatonismo (especialmente Plotino y Proclo) y la teología islámica. Su sistema presenta la emanación cosmológica, la metafísica del ser necesario y contingente, y una psicología que defiende la inmortalidad individual del alma.</p>
+    <blockquote>«La filosofía primera es la ciencia que estudia el Ser en cuanto Ser, sus propiedades esenciales y sus causas primeras.»</blockquote>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Ser necesario/contingente -->
+<div class="modal-overlay" id="modalAvSer" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(201,149,42,.1);color:var(--accent-gold)">🔷</div>
+    <h2>Ser necesario y contingente</h2>
+    <button class="modal-close" onclick="closeModal('modalAvSer')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>La distinción fundamental de la metafísica aviceniana</h3>
+    <p>Para Avicena, la noción de «ser» es la primera que aparece en nuestra mente: anterior a cualquier otra categoría. Al analizar cualquier ser, descubrimos que tiene dos aspectos: <strong>esencia</strong> (qué es) y <strong>existencia</strong> (que es).</p>
+    <h3>La división modal del ser</h3>
+    <ul>
+      <li><span class="chip chip--g">Ser necesario</span> Su no-existencia implica contradicción lógica. Es por sí mismo. Único: Dios.</li>
+      <li><span class="chip chip--gr">Ser posible</span> Puede existir o no existir sin contradicción. Necesita una causa externa para existir.</li>
+    </ul>
+    <blockquote>«El ser necesario es aquel que, si se supone no existente, implica contradicción. El ser posible es aquel que puede suponerse como no existente o existente sin implicar contradicción.»</blockquote>
+    <h3>La originalidad filosófica</h3>
+    <p>Avicena fue el primero en trasladar estas categorías modales (necesario, posible, imposible) de la lógica a la metafísica. Antes de él, al-Fārābī había esbozado algo similar, pero fue Avicena quien elaboró el sistema completo. Esta transposición marcó la metafísica medieval islámica, judía y cristiana.</p>
+    <h3>Características del Ser necesario (Dios)</h3>
+    <ul>
+      <li>Simplísimo: no hay composición alguna en Él.</li>
+      <li>Único: la multiplicidad es incompatible con la necesidad absoluta.</li>
+      <li>En Él la esencia y la existencia se identifican: no puede pensarse más que como existente.</li>
+      <li>Inmutable, inefable, sin género ni especie.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Esencia/existencia -->
+<div class="modal-overlay" id="modalAvEsencia" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(212,169,106,.1);color:var(--accent-sand)">⚗️</div>
+    <h2>Esencia y existencia</h2>
+    <button class="modal-close" onclick="closeModal('modalAvEsencia')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>La distinción que cambió la metafísica medieval</h3>
+    <p>En los seres contingentes, la <strong>esencia</strong> (lo que un ser es) y la <strong>existencia</strong> (el hecho de que exista) son distintas. Un caballo es un caballo por su esencia, pero que exista no se desprende de su esencia: podría no existir.</p>
+    <p>La existencia de los seres contingentes les es <strong>dada desde fuera</strong>, por Dios. En este sentido, Avicena la llama «accidental»: es algo añadido a la esencia desde el exterior.</p>
+    <h3>Dios como excepción</h3>
+    <p>Solo en el Ser necesario la esencia <em>es</em> la existencia. No puede pensarse más que como existente. Esta identidad es lo que hace a Dios absolutamente único y diferente de todos los demás seres.</p>
+    <h3>Impacto en la escolástica</h3>
+    <p>Esta distinción pasó a Tomás de Aquino, aunque con una diferencia crucial: para Avicena, la existencia es un accidente de la esencia; para Tomás, es el <em>acto de ser</em> (<em>esse</em>), lo más perfecto e íntimo de cada cosa. La polémica entre tomistas y suaristas en el siglo XVI seguiría girando en torno a si esta distinción es real o solo de razón.</p>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Averroes Vida -->
+<div class="modal-overlay" id="modalArVida" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(46,125,82,.1);color:var(--accent-green)">📜</div>
+    <h2>Averroes · Vida y obra</h2>
+    <button class="modal-close" onclick="closeModal('modalArVida')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>Ibn Rushd, el Comentador</h3>
+    <p>Abū al-Walīd Muḥammad ibn Aḥmad ibn Rushd (1126-1198) nació en Córdoba en una familia de juristas y teólogos. Estudió medicina, derecho islámico, astronomía y filosofía. El califa almohade Abū Yaʿqūb Yūsuf le encargó personalmente que comentara a Aristóteles, pues lo hallaba difícil de leer.</p>
+    <h3>Sus comentarios a Aristóteles</h3>
+    <p>Averroes redactó comentarios de tres tipos para casi todas las obras de Aristóteles:</p>
+    <ul>
+      <li><strong>Juwāmiʿ</strong> (Compendios o comentarios breves): paráfrasis del pensamiento aristotélico.</li>
+      <li><strong>Talkhīṣāt</strong> (Epítomes o comentarios medios): mezclan el texto con la explicación.</li>
+      <li><strong>Tafāsīr</strong> (Comentarios largos): análisis detallado, frase a frase.</li>
+    </ul>
+    <h3>Recepción en Europa</h3>
+    <p>Sus obras fueron traducidas al latín (por Miguel Escoto y Herman el Alemán) entre 1220 y 1240. Se convirtieron en lectura obligatoria en las universidades europeas, y el propio Aristóteles se leía a menudo a través de sus comentarios. Por ello Dante lo llama «el que hizo el gran comentario».</p>
+    <h3>El final</h3>
+    <p>En 1195, una crisis política llevó al califa Al-Mansur a exiliar a Averroes y quemar parte de sus obras filosóficas. Murió en Marrakech en 1198, parcialmente rehabilitado.</p>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Aristóteles -->
+<div class="modal-overlay" id="modalArAristoteles" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(46,125,82,.1);color:var(--accent-green)">📚</div>
+    <h2>La defensa de Aristóteles</h2>
+    <button class="modal-close" onclick="closeModal('modalArAristoteles')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>El contexto: al-Ghazālī contra los filósofos</h3>
+    <p>Al-Ghazālī (1058-1111) era el teólogo más importante del Islam medieval. En su <em>Tahāfut al-Falāsifa</em> («La incoherencia de los filósofos») atacó veinte tesis del aristotelismo islámico como contrarias a la fe, declarando tres de ellas directamente heréticas.</p>
+    <h3>La respuesta de Averroes</h3>
+    <p>La <em>Tahāfut al-Tahāfut</em> («La incoherencia de la incoherencia») de Averroes es una defensa punto por punto de la filosofía racional. Su argumento central: al-Ghazālī confunde los niveles de discurso.</p>
+    <blockquote>«La ley divina llama a los hombres a contemplar los seres y exhorta a ello. Es obligación de quien está capacitado para el estudio demostrativo ejercerlo.»</blockquote>
+    <h3>El proyecto de depuración aristotélica</h3>
+    <p>Averroes criticaba a Avicena por haber contaminado a Aristóteles con el neoplatonismo. Su proyecto era devolver a Aristóteles su pureza original, libre de influencias plotinianas. Sin embargo, no siempre lo logró: su propio aristotelismo contenía elementos que el Estagirita no habría reconocido.</p>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Intelecto único -->
+<div class="modal-overlay" id="modalArIntelecto" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(46,125,82,.1);color:var(--accent-green)">🧠</div>
+    <h2>El intelecto único</h2>
+    <button class="modal-close" onclick="closeModal('modalArIntelecto')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>El problema del intelecto en Aristóteles</h3>
+    <p>El libro III del <em>Sobre el alma</em> de Aristóteles es uno de los textos más oscuros de la filosofía antigua. Habla de un «intelecto agente» que hace que los inteligibles pasen de la potencia al acto, pero no queda claro si es individual o separado, mortal o inmortal.</p>
+    <h3>La solución de Averroes: el monopsiquismo</h3>
+    <p>Averroes interpretó que el <strong>intelecto material</strong> (la capacidad de recibir los inteligibles) es una única sustancia separada, eterna e impersonal, compartida por todos los seres humanos. Cada individuo se conecta a ella temporalmente cuando actualiza conceptos.</p>
+    <p>Consecuencia: no hay inmortalidad personal. Lo que sobrevive a la muerte es el intelecto único, no el individuo.</p>
+    <h3>El escándalo en Europa</h3>
+    <p>Esta tesis fue el gran problema del aristotelismo cristiano. Los «averroístas latinos» de la Universidad de París (Siger de Brabante, Boecio de Dacia) la desarrollaron hasta sus últimas consecuencias. Tomás de Aquino respondió:</p>
+    <blockquote>«Es manifiesta falsedad decir que el intelecto es uno en número en todos los hombres [...] Sería imposible que hombres distintos entendieran cosas distintas al mismo tiempo.»</blockquote>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Maimónides Vida -->
+<div class="modal-overlay" id="modalMaVida" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(37,99,168,.1);color:var(--accent-blue)">📜</div>
+    <h2>Maimónides · Vida y obra</h2>
+    <button class="modal-close" onclick="closeModal('modalMaVida')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>El mayor pensador judío medieval</h3>
+    <p>Mošeh ben Maimon (1138-1204), conocido en hebreo como Rambam y en árabe como Ibn Maymūn, nació en Córdoba. Cuando tenía unos diez años, la invasión almohade forzó a su familia al exilio. Tras años de errancia por el norte de África y una breve estancia en Tierra Santa, se instaló definitivamente en Fustat (El Cairo), donde fue médico del visir de Saladino y líder espiritual de la comunidad judía egipcia.</p>
+    <h3>Obras principales</h3>
+    <ul>
+      <li><strong>Comentario a la Mishná</strong> (árabe, 1168): introducción sistemática a la ley oral judía. Incluye los célebres Trece principios de la fe.</li>
+      <li><strong>Mishné Torá</strong> (hebreo, 1180): codificación exhaustiva de toda la halajá (ley judía) en catorce libros. Obra monumental de jurisprudencia.</li>
+      <li><strong>Guía de Perplejos</strong> (árabe, 1190): su obra filosófica cumbre. Dirigida a quien conoce la filosofía aristotélica y se halla en conflicto con la fe.</li>
+    </ul>
+    <h3>El doble Maimónides</h3>
+    <p>Hay un debate perpetuo sobre si el Maimónides «real» es el codificador religioso de la Mishné Torá o el filósofo racionalista de la Guía. Su influencia fue enorme en ambos sentidos: generó tanto una corriente de racionalismo judío como una fuerte reacción antifilosófica.</p>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Teología negativa -->
+<div class="modal-overlay" id="modalMaTeologia" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(37,99,168,.1);color:var(--accent-blue)">🕍</div>
+    <h2>Teología negativa</h2>
+    <button class="modal-close" onclick="closeModal('modalMaTeologia')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>El problema del lenguaje sobre Dios</h3>
+    <p>¿Cómo puede el lenguaje humano referirse a Dios si Dios es absolutamente simple, infinito y trasciende toda categoría? Para Maimónides, la respuesta es radical: <strong>cualquier atributo positivo que prediquemos de Dios es inadecuado y potencialmente idolátrico</strong>.</p>
+    <h3>La via negationis</h3>
+    <p>Solo los atributos negativos son apropiados para Dios:</p>
+    <ul>
+      <li>«Dios existe» debe entenderse como «Dios no es un no-ser».</li>
+      <li>«Dios es sabio» debe entenderse como «no hay ignorancia en Dios».</li>
+      <li>«Dios es uno» debe entenderse como «no hay multiplicidad en Él».</li>
+    </ul>
+    <blockquote>«Cuanto más multipliques las negaciones sobre Él, más te aproximarás a la comprensión de Dios. Y cuanto más te limites a los atributos positivos, más te alejarás de Él y más caerás en el error.»</blockquote>
+    <h3>Atributos de acción</h3>
+    <p>Los atributos positivos que la Biblia predica de Dios (misericordioso, justo, airado...) no describen la naturaleza divina sino las <strong>acciones de Dios</strong> y sus efectos en el mundo. Describen cómo Dios actúa, no lo que Dios es.</p>
+    <h3>Influencia en Tomás</h3>
+    <p>Tomás citó expresamente a Maimónides al tratar de los nombres divinos en la <em>Suma Teológica</em>. La via negativa quedó integrada como uno de los tres modos legítimos de hablar de Dios.</p>
+  </div>
+</div>
+</div>
+
+<!-- Modal: Creación -->
+<div class="modal-overlay" id="modalMaCreacion" onclick="closeModalOutside(event)">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-header-icon" style="background:rgba(37,99,168,.1);color:var(--accent-blue)">✨</div>
+    <h2>Creación y eternidad del mundo</h2>
+    <button class="modal-close" onclick="closeModal('modalMaCreacion')">✕</button>
+  </div>
+  <div class="modal-body">
+    <h3>El choque entre fe y filosofía</h3>
+    <p>Aristóteles, Avicena y al-Fārābī coincidían: el mundo es eterno, sin principio ni fin. La revelación judía, cristiana e islámica afirmaba lo contrario: Dios creó el mundo en el tiempo.</p>
+    <h3>La posición de Maimónides</h3>
+    <p>Maimónides adoptó una posición de profunda honestidad intelectual: la razón filosófica <strong>no puede demostrar ni la eternidad ni la creación temporal del mundo</strong>. Ambas son teóricamente posibles.</p>
+    <ul>
+      <li>Los argumentos en favor de la eternidad del mundo no son concluyentes: solo demuestran que el mundo actual podría no haber tenido principio dadas las leyes actuales, pero Dios pudo haber creado un mundo con leyes diferentes.</li>
+      <li>Los argumentos en favor de la creación temporal tampoco son demostrativos.</li>
+    </ul>
+    <p>Dado que la razón no resuelve el debate, la balanza se inclina por la revelación: el mundo fue creado en el tiempo. Pero esta creencia es de fe, no de razón.</p>
+    <h3>El impacto en Tomás</h3>
+    <p>Tomás adoptó exactamente la misma posición: que el mundo haya tenido un principio temporal es una verdad de fe, no demostrable filosóficamente. La razón puede demostrar que el mundo fue creado (depende de Dios), pero no que fue creado <em>en el tiempo</em>.</p>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">Filosofía Árabe y Judía Medieval</div>
+  <p>Historia de la Filosofía — IES Alquipir, Cehegín — Prof. Francisco Jiménez</p>
+</footer>
+
+<script>
+function showMain(){document.querySelectorAll('.subpage').forEach(s=>s.classList.remove('active'));document.getElementById('mainPage').classList.add('active');document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));document.querySelectorAll('.nav-link')[0].classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function goToSub(id){document.querySelectorAll('.subpage').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav-link').forEach(n=>{n.classList.remove('active');if(n.getAttribute('onclick')&&n.getAttribute('onclick').includes(id))n.classList.add('active')});window.scrollTo({top:document.getElementById('mainNav').offsetTop,behavior:'smooth'})}
+function openModal(id){const m=document.getElementById(id);m.style.display='flex';requestAnimationFrame(()=>m.classList.add('show'));document.body.style.overflow='hidden'}
+function closeModal(id){const m=document.getElementById(id);m.classList.remove('show');setTimeout(()=>{m.style.display='none';document.body.style.overflow=''},300)}
+function closeModalOutside(e){if(e.target===e.currentTarget)closeModal(e.target.id)}
+function toggleAccordion(el){el.parentElement.classList.toggle('open')}
+window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>100)});
+</script>
+</body>
+</html>
